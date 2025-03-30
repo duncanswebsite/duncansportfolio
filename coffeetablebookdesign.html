@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <link href="/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+    <script src="/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #D2D2D2;
+            background-image:
+                repeating-linear-gradient(to right, transparent 0 100px,
+                    #25283b22 100px 101px),
+                repeating-linear-gradient(to bottom, transparent 0 100px,
+                    #25283b22 100px 101px);
+        }
+
+        body::before {
+            position: absolute;
+            width: min(1400px, 90vw);
+            top: 10%;
+            left: 50%;
+            height: 90%;
+            transform: translateX(-50%);
+            content: '';
+            background-image: url(images/bg.png);
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: top center;
+            pointer-events: none;
+        }
+    </style>
+    <link rel="stylesheet" href="style4.css">
+</head>
+
+<body>
+
+    <div class="custom-cursor"></div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+        </ul>
+    </nav>
+
+
+
+
+    <div class="banner">
+        <div class="slider" style="--quantity: 10">
+            <div class="item" style="--position: 1">
+                <a href="images/book1.jpg" target="_blank">
+                    <img src="images/book1.jpg" alt="">
+                </a>
+            </div>
+            <div class="item" style="--position: 2">
+                <a href="images/book2.jpg" target="_blank">
+                    <img src="images/book2.jpg" alt="">
+                </a>
+            </div>
+            <div class="item" style="--position: 3">
+                <a href="images/book3.jpg" target="_blank">
+                    <img src="images/book3.jpg" alt="">
+                </a>
+            </div>
+            <div class="item" style="--position: 4">
+                <a href="images/book4.jpg" target="_blank">
+                    <img src="images/book4.jpg" alt="">
+                </a>
+            </div>
+            <div class="item" style="--position: 5">
+                <a href="images/book5.jpg" target="_blank">
+                    <img src="images/book5.jpg" alt="">
+                </a>
+            </div>
+            <div class="item" style="--position: 6">
+                <a href="images/book6.jpg" target="_blank">
+                    <img src="images/book6.jpg" alt="">
+                </a>
+            </div>
+            <div class="item" style="--position: 7">
+                <a href="images/book7.jpg" target="_blank">
+                    <img src="images/book7.jpg" alt="">
+                </a>
+            </div>
+            <div class="item" style="--position: 8">
+                <a href="images/book8.jpg" target="_blank">
+                    <img src="images/book8.jpg" alt="">
+                </a>
+            </div>
+            <div class="item" style="--position: 9">
+                <a href="images/book9.jpg" target="_blank">
+                    <img src="images/book9.jpg" alt="">
+                </a>
+            </div>
+            <div class="item" style="--position: 10">
+                <a href="images/book10.jpg" target="_blank">
+                    <img src="images/book10.jpg" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="content">
+            <h1 data-content="Unapologetically ME">
+                Unapologetically ME
+            </h1>
+            <div class="author">
+                <h2>Coffee Table Book Design</h2>
+            </div>
+            <div class="model"></div>
+        </div>
+    </div>
+    <section id="about-coffeetablebook">
+        <div class="container">
+            <h2>Unapologetically ME</h2>
+            <p>
+                Built Unapologetically ME from the ground up—designing the entire layout, selecting visuals, and
+                crafting custom
+                typography that embodies unapologetic self-expression. I meticulously created a cohesive design using
+                structured grids
+                and bold imagery, ensuring each page flows seamlessly while making a statement. From photo editing in
+                Photoshop to
+                precise layout work in InDesign, I carefully curated each element to reflect the book's bold, confident
+                message. The
+                result is a coffee table book that not only tells a story but challenges readers to embrace their true
+                selves
+                unapologetically.
+            </p>
+
+
+
+            <div class="button-container">
+                <div class="top-row">
+                    <a href="byou.html" class="glass-button">Previous Project</a>
+                    <a href="hotleafbags.html" class="glass-button">Next Project</a>
+                </div>
+
+                <div class="middle-row">
+                    <a href="index.html" class="glass-button">Home</a>
+                    <a href="portfolio.html" class="glass-button">Portfolio</a>
+                </div>
+
+                <a href="mailto:duncan1989@hotmail.ca?subject=Contact%20Form%20Submission&body=First%20Name:%20%0ALast%20Name:%20%0APhone%20Number:%20%0AMessage:%20"
+                    class="glass-button wide-button">Contact Me</a>
+            </div>
+
+
+    </section>
+    <!-- footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="flex">
+                <div class="left">
+                    <div class="wrapper">
+                        <h1>Let's Create.</h1>
+                    </div>
+                    <a
+                        href="mailto:duncan1989@hotmail.ca?subject=Contact%20Form%20Submission&body=First%20Name:%20%0ALast%20Name:%20%0APhone%20Number:%20%0AMessage:%20">
+                        <button>Get in Touch</button>
+                    </a>
+
+                </div>
+                <div class="right">
+                    <h3><a href="https://www.instagram.com/duncanstew.art/">Instagram</a></h3>
+                    <h3><a href="https://www.behance.net/duncanstewart5">Behance</a></h3>
+                    <h3><a href="https://www.linkedin.com/in/duncanstew-art/">Linkedin</a></h3>
+                </div>
+            </div>
+        </div>
+
+        <p>
+            © Duncan Stew.art Graphic Designer.
+        </p>
+    </footer>
+
+    <script src="byou.js"></script>
+
+</body>
+
+</html>

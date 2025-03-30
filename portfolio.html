@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <link href="/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+    <script src="/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #D2D2D2;
+            background-image:
+                repeating-linear-gradient(to right, transparent 0 100px,
+                    #25283b22 100px 101px),
+                repeating-linear-gradient(to bottom, transparent 0 100px,
+                    #25283b22 100px 101px);
+        }
+
+        body::before {
+            position: absolute;
+            width: min(1400px, 90vw);
+            top: 10%;
+            left: 50%;
+            height: 90%;
+            transform: translateX(-50%);
+            content: '';
+            background-image: url(images/bg.png);
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: top center;
+            pointer-events: none;
+        }
+    </style>
+    <link rel="stylesheet" href="style3.css">
+</head>
+
+<body>
+
+    <div class="custom-cursor"></div>
+
+
+    <header>
+        <div class="container">
+            <nav>
+                <ul class="nav-list show">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="snake.html">Snake</a></li>
+                </ul>
+            </nav>
+    
+            <div class="hamburger-menu">
+                <h5>Menu</h5>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+    
+        </div>
+    </header>
+
+
+<section id="My Portfolio">
+    <div class="container">
+        <h2>My Portfolio</h2>
+        <div class="grid-container">
+            <div class="grid-item">
+                <a href="byou.html" class="clickable">
+                    <div class="thumbnail">
+                        <img src="images/1.png" alt="Image 1">
+                    </div>
+                    <div class="label">Complete Brand Design</div>
+                </a>
+            </div>
+            <div class="grid-item">
+                <a href="coffeetablebookdesign.html" class="clickable">
+                    <div class="thumbnail">
+                        <img src="images/book10.jpg" alt="Image 2">
+                    </div>
+                    <div class="label">Coffee Table Photo Book Design</div>
+                </a>
+            </div>
+            <div class="grid-item">
+                <a href="hotleafbags.html" class="clickable">
+                    <div class="thumbnail">
+                        <img src="images/tea6.jpg" alt="Image 3">
+                    </div>
+                    <div class="label">Product & Package Design</div>
+                </a>
+            </div>
+            <div class="grid-item">
+                <a href="tiger.html" class="clickable">
+                    <div class="thumbnail">
+                        <img src="images/t10.jpg" alt="Image 4">
+                    </div>
+                    <div class="label">Energy Drink Design</div>
+                </a>
+            </div>
+            <div class="grid-item">
+                <a href="19crimes.html" class="clickable">
+                    <div class="thumbnail">
+                        <img src="images/19C1.png" alt="Image 5">
+                    </div>
+                    <div class="label">19 Crimes Label + Product Mockup</div>
+                </a>
+            </div>
+            <div class="grid-item">
+                <a href="digitalpainting.html" class="clickable">
+                    <div class="thumbnail">
+                        <img src="images/My Final Art.jpg" alt="Image 4">
+                    </div>
+                    <div class="label">Self Portrait Digital Painting Process</div>
+                </a>
+            </div>
+            </div>
+            
+    </div>
+</section>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="flex">
+                <div class="left">
+                    <div class="wrapper">
+                        <h1>Let's Create.</h1>
+                    </div>
+                    <a
+                        href="mailto:duncan1989@hotmail.ca?subject=Contact%20Form%20Submission&body=First%20Name:%20%0ALast%20Name:%20%0APhone%20Number:%20%0AMessage:%20">
+                        <button>Get in Touch</button>
+                    </a>
+
+                </div>
+                <div class="right">
+                    <h3><a href="https://www.instagram.com/duncanstew.art/">Instagram</a></h3>
+                    <h3><a href="https://www.behance.net/duncanstewart5">Behance</a></h3>
+                    <h3><a href="https://www.linkedin.com/in/duncanstew-art/">Linkedin</a></h3>
+                </div>
+            </div>
+        </div>
+    
+        <p>
+            © Duncan Stew.art Graphic Designer.
+        </p>
+    </footer>
+
+
+    <script src="portfolio.js"></script>
+
+</body>
+
+</html>

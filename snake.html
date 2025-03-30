@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snake Game - Duncan Stew.art Edition</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #1e1e1e;
+            overflow: hidden;
+        }
+
+        canvas {
+            border: 2px solid #fff;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .scoreboard {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scoreboard span {
+            font-weight: bold;
+            color: #ff6347;
+            margin-left: 10px;
+        }
+
+        .name-display {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 32px;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .glowing-text {
+            animation: glow 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 20px #ff6347, 0 0 30px #ff6347, 0 0 40px #ff6347;
+            }
+
+            100% {
+                text-shadow: 0 0 30px #ff6347, 0 0 40px #ff6347, 0 0 50px #ff6347;
+            }
+        }
+
+        .letter-display {
+            position: absolute;
+            top: 420px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 32px;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .how-to-play {
+            position: absolute;
+            top: 100px;
+            right: 20px;
+            font-size: 18px;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            letter-spacing: 1px;
+            z-index: 10;
+        }
+
+        .how-to-play div {
+            margin: 10px 0;
+        }
+
+        .control-btn {
+            padding: 10px 16px;
+            margin-bottom: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #ff6347;
+            border: 2px solid #ff6347;
+            border-radius: 5px;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: all 0.2s ease;
+            background: transparent;
+        }
+
+        .control-btn:active {
+            transform: scale(0.95);
+            box-shadow: 0 0 15px #ff6347;
+            opacity: 1;
+        }
+
+        .control-btn.active {
+            box-shadow: 0 0 20px #ff6347;
+            opacity: 1;
+        }
+
+        .credit {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        @media (max-width: 600px) {
+            .how-to-play {
+                top: unset;
+                bottom: 20px;
+                left: 50%;
+                right: unset;
+                transform: translateX(-50%);
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 90%;
+                background: rgba(30, 30, 30, 0.85);
+                padding: 10px;
+                border-radius: 10px;
+            }
+
+            .how-to-play>div:first-child {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+
+            .control-btn {
+                margin: 5px;
+                font-size: 16px;
+                padding: 8px 14px;
+            }
+
+            .letter-display {
+                top: unset;
+                bottom: 90px;
+            }
+        }
+
+        .home-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 16px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #ff6347;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 10px #ff6347;
+            z-index: 20;
+        }
+
+        .home-btn:hover {
+            background-color: #e5533f;
+        }
+    </style>
+</head>
+
+<body>
+    <audio id="bg-music" autoplay loop>
+        <source src="snakes.mp3" type="audio/mpeg" />
+    </audio>
+
+    <div class="scoreboard">Score: <span id="score">0</span></div>
+    <div class="name-display glowing-text">Duncan Stew.art</div>
+    <canvas width="400" height="400" id="game"></canvas>
+    <div class="letter-display" id="letter-display"></div>
+    <div class="how-to-play">
+        <div>How to Play:</div>
+        <div id="up-btn" class="control-btn">↑ Up</div>
+        <div id="down-btn" class="control-btn">↓ Down</div>
+        <div id="left-btn" class="control-btn">← Left</div>
+        <div id="right-btn" class="control-btn">→ Right</div>
+    </div>
+    <button id="home-btn" class="home-btn">Home</button>
+    <div class="credit">Music: "Snakes" by Corook</div>
+
+    <script>
+        const canvas = document.getElementById('game');
+        const context = canvas.getContext('2d');
+
+        const grid = 16;
+        let count = 0;
+        let level = 1;
+        let blocks = [];
+        let rainbowIndex = 0;
+        const rainbowColors = ['#FF0000', '#FF7F00', '#FFFF00', '#00FF00', '#0000FF', '#4B0082', '#9400D3'];
+
+        const snake = {
+            x: 160,
+            y: 160,
+            dx: grid,
+            dy: 0,
+            cells: [],
+            maxCells: 4
+        };
+
+        const name = 'Duncan Stew.art';
+        let nameIndex = 0;
+
+        const food = {
+            x: getRandomInt(0, 25) * grid,
+            y: getRandomInt(0, 25) * grid,
+            letter: name[nameIndex]
+        };
+
+        let score = 0;
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+        function drawRedDiamond(x, y) {
+            context.fillStyle = 'red';
+            context.beginPath();
+            context.moveTo(x + grid / 2, y);
+            context.lineTo(x + grid, y + grid / 2);
+            context.lineTo(x + grid / 2, y + grid);
+            context.lineTo(x, y + grid / 2);
+            context.closePath();
+            context.fill();
+        }
+
+        function updateScore() {
+            score++;
+            document.getElementById('score').textContent = score;
+        }
+
+        function updateLetterDisplay() {
+            const letterDisplay = name.slice(0, snake.maxCells - 4);
+            document.getElementById('letter-display').textContent = letterDisplay.split('').join(' ');
+        }
+
+        function resetGame() {
+            snake.x = 160;
+            snake.y = 160;
+            snake.dx = grid;
+            snake.dy = 0;
+            snake.cells = [];
+            snake.maxCells = 4;
+            nameIndex = 0;
+            food.letter = name[nameIndex];
+            food.x = getRandomInt(0, 25) * grid;
+            food.y = getRandomInt(0, 25) * grid;
+            score = 0;
+            blocks = [];
+            updateScore();
+            updateLetterDisplay();
+        }
+
+        function nextLevel() {
+            level++;
+            resetGame();
+            blocks.push({
+                x: getRandomInt(0, 25) * grid,
+                y: getRandomInt(0, 25) * grid
+            });
+        }
+
+        function getSnakeColor() {
+            if (snake.maxCells >= 14) {
+                const color = rainbowColors[rainbowIndex % rainbowColors.length];
+                rainbowIndex++;
+                return color;
+            } else {
+                const index = Math.floor((snake.maxCells - 4) / 2);
+                return ['green', 'blue', 'purple', 'orange', 'cyan'][index] || 'cyan';
+            }
+        }
+
+        function loop() {
+            requestAnimationFrame(loop);
+            if (++count < 8) return;
+            count = 0;
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            snake.x += snake.dx;
+            snake.y += snake.dy;
+
+            if (snake.x < 0) snake.x = canvas.width - grid;
+            else if (snake.x >= canvas.width) snake.x = 0;
+
+            if (snake.y < 0) snake.y = canvas.height - grid;
+            else if (snake.y >= canvas.height) snake.y = 0;
+
+            snake.cells.unshift({ x: snake.x, y: snake.y });
+            if (snake.cells.length > snake.maxCells) snake.cells.pop();
+
+            for (let i = 1; i < snake.cells.length; i++) {
+                if (snake.cells[i].x === snake.x && snake.cells[i].y === snake.y) {
+                    alert('Game Over! You ran into yourself.');
+                    resetGame();
+                    return;
+                }
+            }
+
+            blocks.forEach(block => {
+                context.fillStyle = '#ff6347';
+                context.fillRect(block.x, block.y, grid, grid);
+
+                if (snake.x === block.x && snake.y === block.y) {
+                    alert('Game Over! You hit an obstacle.');
+                    resetGame();
+                    return;
+                }
+            });
+
+            const snakeColor = getSnakeColor();
+            snake.cells.forEach(cell => {
+                context.fillStyle = snakeColor;
+                context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
+                drawRedDiamond(cell.x, cell.y);
+            });
+
+            if (snake.x === food.x && snake.y === food.y) {
+                snake.maxCells++;
+                updateScore();
+
+                if (nameIndex < name.length - 1) {
+                    nameIndex++;
+                    food.letter = name[nameIndex];
+                } else {
+                    setTimeout(() => {
+                        alert('Level Complete!');
+                        nextLevel();
+                    }, 100);
+                }
+
+                food.x = getRandomInt(0, 25) * grid;
+                food.y = getRandomInt(0, 25) * grid;
+                updateLetterDisplay();
+            }
+
+            context.fillStyle = 'white';
+            context.font = 'bold 16px Arial';
+            context.fillText(food.letter, food.x + grid / 4, food.y + grid / 1.5);
+
+            context.fillStyle = 'rgba(255, 99, 71, 0.7)';
+            context.fillRect(food.x, food.y, grid, grid);
+
+            context.fillStyle = 'white';
+            context.font = 'bold 24px Arial';
+            context.fillText('Score: ' + score, 10, canvas.height - 10);
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.which === 37 && snake.dx === 0) {
+                snake.dx = -grid;
+                snake.dy = 0;
+            } else if (e.which === 38 && snake.dy === 0) {
+                snake.dy = -grid;
+                snake.dx = 0;
+            } else if (e.which === 39 && snake.dx === 0) {
+                snake.dx = grid;
+                snake.dy = 0;
+            } else if (e.which === 40 && snake.dy === 0) {
+                snake.dy = grid;
+                snake.dx = 0;
+            }
+        });
+
+        function bindControlEvent(id, direction) {
+            const btn = document.getElementById(id);
+            const handler = () => {
+                if (direction === 'up' && snake.dy === 0) {
+                    snake.dy = -grid;
+                    snake.dx = 0;
+                } else if (direction === 'down' && snake.dy === 0) {
+                    snake.dy = grid;
+                    snake.dx = 0;
+                } else if (direction === 'left' && snake.dx === 0) {
+                    snake.dx = -grid;
+                    snake.dy = 0;
+                } else if (direction === 'right' && snake.dx === 0) {
+                    snake.dx = grid;
+                    snake.dy = 0;
+                }
+            };
+            btn.addEventListener('click', handler);
+            btn.addEventListener('touchstart', handler);
+        }
+
+        ['up', 'down', 'left', 'right'].forEach(dir => bindControlEvent(dir + '-btn', dir));
+
+        let touchStartX = 0;
+        let touchStartY = 0;
+
+        canvas.addEventListener('touchstart', function (e) {
+            const touch = e.touches[0];
+            touchStartX = touch.clientX;
+            touchStartY = touch.clientY;
+        }, false);
+
+        canvas.addEventListener('touchend', function (e) {
+            const touch = e.changedTouches[0];
+            const dx = touch.clientX - touchStartX;
+            const dy = touch.clientY - touchStartY;
+
+            if (Math.abs(dx) > Math.abs(dy)) {
+                if (dx > 30 && snake.dx === 0) {
+                    snake.dx = grid;
+                    snake.dy = 0;
+                } else if (dx < -30 && snake.dx === 0) {
+                    snake.dx = -grid;
+                    snake.dy = 0;
+                }
+            } else {
+                if (dy > 30 && snake.dy === 0) {
+                    snake.dy = grid;
+                    snake.dx = 0;
+                } else if (dy < -30 && snake.dy === 0) {
+                    snake.dy = -grid;
+                    snake.dx = 0;
+                }
+            }
+        }, false);
+
+        const music = document.getElementById('bg-music');
+        function unlockAudio() {
+            music.play().catch(e => console.warn('Autoplay prevented:', e));
+            document.removeEventListener('keydown', unlockAudio);
+            document.removeEventListener('click', unlockAudio);
+        }
+        document.addEventListener('keydown', unlockAudio);
+        document.addEventListener('click', unlockAudio);
+
+        loop();
+
+        document.getElementById('home-btn').addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+    </script>
+
+</body>
+
+</html>

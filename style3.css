@@ -1,0 +1,354 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --primary-color: #ED213A;
+    --border-color: #f0dddd;
+    --black-color: #2b2d42;
+    --white-color: #f6f3f3e3;
+    --primary-font: 'Poppins', sans-serif;
+    --secondary-font: 'Bebas Neue', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--primary-font);
+    background: #0080ff;
+    background: -webkit-linear-gradient(to right, #F8F9FA, #F8F9FA, #DEE2E6);
+    background: linear-gradient(to right, #F8F9FA, #F8F9FA, #DEE2E6);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--primary-font);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.heading__title {
+    font-size: calc(36px + 8 * ((100vw - 320px) / 680));
+    font-weight: 200;
+    text-align: center;
+    font-family: var(--primary-font);
+}
+
+body {
+    cursor: none;
+}
+.custom-cursor {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: black;
+    pointer-events: none;
+    transition: transform 0.1s ease;
+    transition: background-color 0.2s ease;
+    z-index: 9999;
+}
+
+button:hover~.custom-cursor,
+a:hover~.custom-cursor {
+    width: 40px;
+    height: 40px;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    position: relative;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+    
+
+    .container {
+        width: 80%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 1rem 0;
+        position: relative;
+    }
+
+nav {
+    border-radius: 0.2rem;
+    position: absolute;
+    right: 0;
+    top: 6vh;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--black-color);
+    background-color: var(--white-color);
+    width: 150px;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    border-radius: 0.2rem;
+    transition: all 0.2s ease-out;
+    margin: 0;
+}
+
+nav ul.show {
+    height: 120px;
+    opacity: 1;
+}
+
+nav ul li {
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul li a {
+    color: var(--black-color);
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    padding: 10px 0;
+}
+            li {
+                padding: 1rem 2rem;
+                text-align: center;
+
+                a {
+                    font-weight: 500;
+
+                    &:hover {
+                        color: var(--primary-color);
+                    }
+                }
+            }
+
+            &.show {
+                height: 110px;
+                opacity: 1;
+            }
+        }
+
+
+    .hamburger-menu {
+        display: flex;
+        gap: 0.7rem;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: var(--black-color);
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+
+            span {
+                display: block;
+                width: 1.5rem;
+                height: 2px;
+                background-color: black;
+                margin: 0.20rem 0;
+            }
+        }
+    }
+
+
+#photo-gallery {
+    padding: 60px 20px;
+    background-color: #f8f8f8;
+    text-align: center;
+    margin-top: 100px;
+    position: relative;
+    z-index: 2;
+}
+
+#photo-gallery .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+#photo-gallery h2 {
+    font-family: var(--primary-font);
+    font-size: 3em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin: 0 auto;
+    max-width: 1400px;
+    padding: 20px;
+}
+
+.grid-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.thumbnail {
+    width: 100%;
+    height: 350px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumbnail::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.label {
+    font-family: var(--primary-font);
+    font-size: 1.2em;
+    color: #fff;
+    text-align: center;
+    margin-top: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 12px;
+    border-radius: 5px;
+    width: 100%;
+    transition: background 0.3s ease;
+}
+
+.grid-item:hover .label {
+    background: rgb(255, 0, 0);
+}
+
+@media screen and (max-width: 1023px) {
+    #photo-gallery h2 {
+        font-size: 2.5em;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .thumbnail {
+        height: 300px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    #photo-gallery h2 {
+        font-size: 2em;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .thumbnail {
+        height: 280px;
+    }
+}
+#footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 3rem;
+
+    .container {
+        width: 100%;
+        padding: 10rem 0;
+        border-top: 1px solid var(--black-color);
+        border-bottom: 1px solid var(--black-color);
+
+        .flex {
+            display: flex;
+            justify-content: space-between;
+
+            .left {
+                .wrapper {
+                    overflow: hidden;
+                    margin: 2rem 0;
+
+                    h1 {
+                        line-height: 100px;
+                        transform: translateY(-150px);
+                    }
+                }
+
+                h1 {
+                    font-size: 5vw;
+                    color: var(--black-color);
+                }
+
+                button {
+                    padding: 1rem 4rem;
+                    font-size: 1vw;
+                    font-family: var(--primary-font);
+                    border: transparent;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: #e70000;
+                        color: var(--white-color);
+                    }
+                }
+            }
+
+            .right {
+                h3 {
+                    font-size: 2vw;
+
+                    &:hover {
+                        color:#ff0000;
+                    }
+                }
+            }
+        }
+
+        p {
+            font-size: 1rem;
+            text-align: center;
+            padding: 2rem 0;
+        }
+    }
+}

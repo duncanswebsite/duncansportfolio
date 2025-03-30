@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Design</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.14/dist/lenis.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="custom-cursor"></div>
+
+
+    <header>
+        <div class="container">
+            <nav>
+                <ul class="nav-list show">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="snake.html">Snake</a></li>
+                </ul>
+            </nav>
+
+            <div class="hamburger-menu">
+                <h5>Menu</h5>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <main id="site-main">
+
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="title">
+                        <div class="firstname">
+                            <span class="name">D</span>
+                            <span class="name">U</span>
+                            <span class="name">N</span>
+                            <span class="name">C</span>
+                            <span class="name">A</span>
+                            <span class="name">N</span>
+                        </div>
+                    </div>
+                    <div class="title">
+                        <div class="firstname">
+                            <span class="name">S</span>
+                            <span class="name">T</span>
+                            <span class="name">E</span>
+                            <span class="name">W</span>
+                            <span class="name">.</span>
+                            <span class="name">A</span>
+                            <span class="name">R</span>
+                            <span class="name">T</span>
+                        </div>
+                    </div>
+                    <p class="post">
+                        Graphic Designer
+                    </p>
+                </div>
+                <div class="particles">
+                    <div class="rectangle _0"></div>
+                    <div class="rectangle _1"></div>
+                    <div class="rectangle _2"></div>
+                    <div class="rectangle _3"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="work-section" id="work">
+            <div class="container">
+
+                <div id="horizontal-scroll">
+
+
+                    <div class="work-title">
+                        <h1 class="heading__title">Featured Work<h1>
+                    </div>
+
+
+                    <div class="horizontal-scroll-wrapper">
+                        <div class="horizontal">
+                            <div>
+                                <img src="./assets/img_1.jpg" alt="Img1">
+                            </div>
+                            <div>
+                                <img src="./assets/img_2.jpg" alt="Img1">
+                            </div>
+                            <div>
+                                <img src="./assets/img_3.jpg" alt="Img1">
+                            </div>
+                            <div>
+                                <img src="./assets/img_4.png" alt="Img1">
+                            </div>
+                            <div>
+                                <img src="./assets/img_5.jpg" alt="Img1">
+                            </div>
+                            <div>
+                                <img src="./assets/img_6.png" alt="Img1">
+                            </div>
+                            <div>
+                                <img src="./assets/img_7.png" alt="Img1">
+                            </div>
+                            <div>
+                                <img src="./assets/img_8.jpg" alt="Img1">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- What I Do Section -->
+        <section id="what-i-do">
+            <h2>What I Do</h2>
+        </section>
+
+
+
+
+        <div class="ido-container">
+            <!-- Brand Design Box (B-You) -->
+            <div class="ido-item" onmouseover="showSlider(this)" onmouseout="resetSlider(this)">
+                <div class="icon-title">
+                    <!-- Brand Design Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24">
+                        <path
+                            d="M20 2h-5l-1.4 1.4L13 5h-2L9.4 3.4 8 2H3a1 1 0 00-1 1v4h2V4h2.6l1.4 1.4L10 7h4l1.4-1.6L16.6 4H19v3h2V3a1 1 0 00-1-1z">
+                        </path>
+                    </svg>
+                    <h3 class="large-title">Brand Design</h3>
+                </div>
+                <div class="banner-container">
+                    <div class="banner">
+                        <div class="slider">
+                            <div class="item"><img src="images/5.jpg" alt=""></div>
+                            <div class="item"><img src="images/4.jpg" alt=""></div>
+                            <div class="item"><img src="images/3.jpg" alt=""></div>
+                            <div class="item"><img src="images/2.jpg" alt=""></div>
+                            <div class="item"><img src="images/1.jpg" alt=""></div>
+                        </div>
+                    </div>
+                    <button class="arrow left" onclick="slideLeft(this)">&#10094;</button>
+                    <button class="arrow right" onclick="slideRight(this)">&#10095;</button>
+                </div>
+                <a href="byou.html" class="see-project-button">SEE FULL PROJECT</a>
+            </div>
+
+            <!-- Editorial Design Box (Coffee Table Book) -->
+            <div class="ido-item" onmouseover="showSlider(this)" onmouseout="resetSlider(this)">
+                <div class="icon-title">
+                    <!-- Editorial Design Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24">
+                        <path
+                            d="M6 2C4.9 2 4 2.9 4 4v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H6zm0 2h12v16H6V4zm2 2v12h8V6H8z">
+                        </path>
+                    </svg>
+                    <h3 class="large-title">Editorial Design</h3>
+                </div>
+                <div class="banner-container">
+                    <div class="banner">
+                        <div class="slider">
+                            <div class="item"><img src="images/book1.jpg" alt=""></div>
+                            <div class="item"><img src="images/book2.jpg" alt=""></div>
+                            <div class="item"><img src="images/book3.jpg" alt=""></div>
+                            <div class="item"><img src="images/book4.jpg" alt=""></div>
+                            <div class="item"><img src="images/book5.jpg" alt=""></div>
+                        </div>
+                    </div>
+                    <button class="arrow left" onclick="slideLeft(this)">&#10094;</button>
+                    <button class="arrow right" onclick="slideRight(this)">&#10095;</button>
+                </div>
+                <a href="coffee-table-book.html" class="see-project-button">SEE FULL PROJECT</a>
+            </div>
+
+            <!-- Digital Painting Box (Self Portrait) -->
+            <div class="ido-item" onmouseover="showSlider(this)" onmouseout="resetSlider(this)">
+                <div class="icon-title">
+                    <!-- Digital Painting Icon (Custom Palette Icon) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.66 0-3-1.34-3-3h6c0 1.66-1.34 3-3 3zm4-6h-8c-.55 0-1-.45-1-1s.45-1 1-1h8c.55 0 1 .45 1 1s-.45 1-1 1z">
+                        </path>
+                    </svg>
+                    <h3 class="large-title">Digital Painting</h3>
+                </div>
+                <div class="banner-container">
+                    <div class="banner">
+                        <div class="slider">
+                            <div class="item"><img src="images/me1.jpg" alt=""></div>
+                            <div class="item"><img src="images/me2.jpg" alt=""></div>
+                            <div class="item"><img src="images/me3.jpg" alt=""></div>
+                            <div class="item"><img src="images/me4.jpg" alt=""></div>
+                            <div class="item"><img src="images/me5.jpg" alt=""></div>
+                        </div>
+                    </div>
+                    <button class="arrow left" onclick="slideLeft(this)">&#10094;</button>
+                    <button class="arrow right" onclick="slideRight(this)">&#10095;</button>
+                </div>
+                <a href="digitalpainting.html" class="see-project-button">SEE FULL PROJECT</a>
+            </div>
+
+            <!-- Energy Drink Design Box -->
+            <div class="ido-item" onmouseover="showSlider(this)" onmouseout="resetSlider(this)">
+                <div class="icon-title">
+                    <!-- Energy Drink Design Icon (Custom Energy Drink Can Icon) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24">
+                        <path
+                            d="M14 2h-4c-1.1 0-2 .9-2 2v18h8V4c0-1.1-.9-2-2-2zm0 18h-4v-3h4v3zm0-5h-4v-3h4v3zm0-5h-4V7h4v3zm0-5h-4V4h4v1z">
+                        </path>
+                    </svg>
+                    <h3 class="large-title">Drink Design</h3>
+                </div>
+                <div class="banner-container">
+                    <div class="banner">
+                        <div class="slider">
+                            <div class="item"><img src="images/t1.jpg" alt=""></div>
+                            <div class="item"><img src="images/t2.jpg" alt=""></div>
+                            <div class="item"><img src="images/t3.jpg" alt=""></div>
+                            <div class="item"><img src="images/t4.jpg" alt=""></div>
+                            <div class="item"><img src="images/t5.jpg" alt=""></div>
+                        </div>
+                    </div>
+                    <button class="arrow left" onclick="slideLeft(this)">&#10094;</button>
+                    <button class="arrow right" onclick="slideRight(this)">&#10095;</button>
+                </div>
+                <a href="tiger.html" class="see-project-button">SEE FULL PROJECT</a>
+            </div>
+            <!-- Snake Game Box (Placeholder GIF) -->
+            <div class="ido-item" onmouseover="showSlider(this)" onmouseout="resetSlider(this)">
+                <div class="icon-title">
+                    <!-- Web Development Icon (Standard Size & Styling) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" width="80" height="80"
+                        fill="#000016">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM10 17l1.41-1.41L7.83 12l3.58-3.59L10 7l-5 5 5 5zm4-10l-1.41 1.41L16.17 12l-3.58 3.59L14 17l5-5-5-5z">
+                        </path>
+                    </svg>
+                    <h3 class="large-title">Web Dev</h3>
+                </div>
+                <div class="banner-container">
+                    <div class="banner">
+                        <div class="slider">
+                            <!-- Placeholder GIF - Replace with your actual snake game gif -->
+                            <div class="item"><img src="images/snakegame.gif" alt="Snake Game Preview"></div>
+                        </div>
+                    </div>
+                    <button class="arrow left" onclick="slideLeft(this)">&#10094;</button>
+                    <button class="arrow right" onclick="slideRight(this)">&#10095;</button>
+                </div>
+                <a href="snakegame.html" class="see-project-button">SEE FULL PROJECT</a>
+            </div>
+
+
+        </div>
+
+
+
+        <section class="about-section" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <h1 class="heading__title text">About Me</h1>
+                </div>
+                <div class="text">
+                    <p>Hey, I’m Duncan Stewart. A graphic designer who thrives on structure but loves flipping it on its
+                        head.
+                        Clean lines, bold contrasts, and sharp, intentional design are my comfort zone, but I’m not
+                        afraid to
+                        push boundaries to make something stand out.</p>
+                    <p>I’m constantly experimenting with new techniques to keep my work fresh. My vibe? Bold, minimal,
+                        structured, but never boring.</p>
+                    <p>When I'm not designing? I’m probably deep into a video game with my two boys or turning random
+                        creative
+                        sparks into projects that push my skills even further. You want something that grabs attention
+                        and
+                        leaves a mark? Let’s make it happen.</p>
+                </div>
+            </div>
+
+            <div class="parallax"></div>
+        </section>
+
+    </main>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="flex">
+                <div class="left">
+                    <div class="wrapper">
+                        <h1>Let's Create.</h1>
+                    </div>
+                    <a
+                        href="mailto:duncan1989@hotmail.ca?subject=Contact%20Form%20Submission&body=First%20Name:%20%0ALast%20Name:%20%0APhone%20Number:%20%0AMessage:%20">
+                        <button>Get in Touch</button>
+                    </a>
+
+                </div>
+                <div class="right">
+                    <h3><a href="https://www.instagram.com/duncanstew.art/">Instagram</a></h3>
+                    <h3><a href="https://www.behance.net/duncanstewart5">Behance</a></h3>
+                    <h3><a href="https://www.linkedin.com/in/duncanstew-art/">Linkedin</a></h3>
+                </div>
+            </div>
+        </div>
+
+        <p>
+            © Duncan Stew.art Graphic Designer.
+        </p>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+    <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
